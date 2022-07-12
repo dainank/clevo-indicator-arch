@@ -1,12 +1,9 @@
-Clevo Fan Control Indicator for Ubuntu
+Clevo Fan Control Indicator for Arch
 ======================================
 
-This program is an Ubuntu indicator to control the fan of Clevo laptops, using reversed-engineering port information from ECView.
+This program is an Arch indicator to control the fan of Clevo laptops, using reversed-engineering port information from ECView.
 
 It shows the CPU temperature on the left and the GPU temperature on the right, and a menu for manual control.
-
-![Clevo Indicator Screen](http://i.imgur.com/ucwWxLq.png)
-
 
 
 For command-line, use *-h* to display help, or a number representing percentage of fan duty to control the fan (from 40% to 100%).
@@ -22,7 +19,6 @@ cd clevo-indicator
 make install
 ```
 
-
 Notes
 -----
 
@@ -33,6 +29,8 @@ IO ports. The setuid=root creates a special situation in which this program can
 fork itself and run under two users (one for desktop/indicator and the other
 for EC control), so you could see two processes in ps, and killing either one
 of them would immediately terminate the other.
+
+If this does not work, try: ```sudo chmod ugo+rwx clevo-indicator```
 
 Be careful not to use any other program accessing the EC by low-level IO
 syscalls (inb/outb) at the same time - I don't know what might happen, since

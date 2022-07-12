@@ -2,8 +2,8 @@
  ============================================================================
  Name        : clevo-indicator.c
  Author      : AqD <iiiaqd@gmail.com>
- Version     :
- Description : Ubuntu fan control indicator for Clevo laptops
+ Version     : v1.1
+ Description : Arch fan control indicator for Clevo laptops
 
  Based on http://www.association-apml.fr/upload/fanctrl.c by Jonas Diemer
  (diemer@gmx.de)
@@ -119,6 +119,8 @@ struct {
 }static menuitems[] = {
         { "Set FAN to AUTO", G_CALLBACK(ui_command_set_fan), 0, AUTO, NULL },
         { "", NULL, 0L, NA, NULL },
+        { "Set FAN to  40%", G_CALLBACK(ui_command_set_fan), 40, MANUAL, NULL },
+        { "Set FAN to  50%", G_CALLBACK(ui_command_set_fan), 50, MANUAL, NULL },
         { "Set FAN to  60%", G_CALLBACK(ui_command_set_fan), 60, MANUAL, NULL },
         { "Set FAN to  70%", G_CALLBACK(ui_command_set_fan), 70, MANUAL, NULL },
         { "Set FAN to  80%", G_CALLBACK(ui_command_set_fan), 80, MANUAL, NULL },
@@ -500,7 +502,7 @@ static int ec_query_fan_rpms(void) {
 }
 
 static int ec_write_fan_duty(int duty_percentage) {
-    if (duty_percentage < 60 || duty_percentage > 100) {
+    if (duty_percentage < 30 || duty_percentage > 100) {
         printf("Wrong fan duty to write: %d\n", duty_percentage);
         return EXIT_FAILURE;
     }
