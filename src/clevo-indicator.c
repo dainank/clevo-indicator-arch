@@ -14,6 +14,7 @@
  gcc clevo-indicator.c -o clevo-indicator `pkg-config --cflags --libs appindicator3-0.1` -lm
  sudo chown root clevo-indicator
  sudo chmod u+s clevo-indicator
+ sudo chmod ugo+rwx clevo-indicator
 
  Run as effective uid = root, but uid = desktop user (in order to use indicator).
 
