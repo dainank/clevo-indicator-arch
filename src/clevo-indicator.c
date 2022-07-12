@@ -2,7 +2,7 @@
  ============================================================================
  Name        : clevo-indicator.c
  Author      : AqD <iiiaqd@gmail.com>
- Version     : v1.1
+ Version     : v0.1
  Description : Arch fan control indicator for Clevo laptops
 
  Based on http://www.association-apml.fr/upload/fanctrl.c by Jonas Diemer
@@ -11,7 +11,7 @@
  ============================================================================
 
  TEST:
- gcc clevo-indicator.c -o clevo-indicator `pkg-config --cflags --libs appindicator3-0.1` -lm
+ gcc clevo-indicator.c -o clevo-indicator-arch `pkg-config --cflags --libs appindicator3-0.1` -lm
  sudo chown root clevo-indicator-arch
  sudo chmod u+s clevo-indicator-arch
  sudo chmod ugo+rwx clevo-indicator-arch
