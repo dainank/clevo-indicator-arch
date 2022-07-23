@@ -5,7 +5,7 @@ This program is an Arch indicator to control the fan of Clevo laptops, using rev
 
 It shows the CPU temperature on the left and the GPU temperature on the right, and a menu for manual control.
 
-For command-line, use *-h* to display help, or a number representing percentage of fan duty to control the fan (from 40% to 100%).
+For command-line, use *-h* to display help, or a number representing percentage of fan duty to control the fan.
 
 
 Build and Install
