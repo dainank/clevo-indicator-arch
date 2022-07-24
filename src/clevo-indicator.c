@@ -1,12 +1,12 @@
 /*
  ============================================================================
- Name        : clevo-indicator.c
- Author      : AqD <iiiaqd@gmail.com>
- Version     : v0.1
- Description : Arch fan control indicator for Clevo laptops
+ Name               : clevo-indicator.c
+ Original Author    : AqD <iiiaqd@gmail.com>
+ Author             : Dainank <dainank-dev@outlook.com>
+ Version            : v0.2
+ Description        : Arch fan control indicator for 'Clevo' laptops.
 
- Based on http://www.association-apml.fr/upload/fanctrl.c by Jonas Diemer
- (diemer@gmx.de)
+ Based on http://www.association-apml.fr/upload/fanctrl.c by Jonas Diemer (diemer@gmx.de)
 
  ============================================================================
 
@@ -21,11 +21,11 @@
  ============================================================================
  Auto fan control algorithm:
 
- The algorithm is to replace the builtin auto fan-control algorithm in Clevo
- laptops which is apparently broken in recent models such as W350SSQ, where the
- fan doesn't get kicked until both of GPU and CPU are really hot (and GPU
- cannot be hot anymore thanks to nVIDIA's Maxwell chips). It's far more
- aggressive than the builtin algorithm in order to keep the temperatures below
+ The algorithm is to replace the built in auto fan-control algorithm in Clevo
+ Laptops which are apparently broken in recent models such as W350SSQ, where the
+ fan does not spin fast until both the GPU and CPU are incredibly hot (and GPU
+ cannot be hot anymore thanks to NVIDIA's Maxwell chips). This algorithm is far more
+ aggressive than the built in algorithm in order to keep the temperatures below
  60°C all the time, for maximized performance with Intel turbo boost enabled.
 
  ============================================================================
@@ -453,20 +453,20 @@ static int ec_auto_duty_adjust(void) {
     if (temp >= 70 && duty < 90)
         return 90;
     if (temp >= 60 && duty < 80)
-        return 70;
+        return 80;
     if (temp >= 50 && duty < 70)
-        return 60;
+        return 70;
     if (temp >= 40 && duty < 60)
-        return 50;
+        return 60;
     if (temp >= 30 && duty < 50)
-        return 40;
+        return 50;
     if (temp >= 20 && duty < 40)
         return 40;
     if (temp >= 10 && duty < 30)
-        return 40;
+        return 30;
     //
     if (temp <= 15 && duty > 30)
-        return 40;
+        return 30;
     if (temp <= 25 && duty > 40)
         return 40;
     if (temp <= 35 && duty > 50)
