@@ -1,11 +1,11 @@
 Clevo Fan Control Indicator for Arch
 ======================================
 
-This program is an Arch indicator to control the fan of Clevo laptops, using reversed-engineering port information from ECView.
+This program is an Arch indicator to control the fan of Clevo laptops, using reversed-engineered port information from ECView.
 
-It shows the CPU temperature on the left and the GPU temperature on the right, and a menu for manual control.
+It shows the CPU temperature on the left and the GPU temperature on the right, as well as a menu for manual control.
 
-For command-line, use *-h* to display help, or a number representing percentage of fan duty to control the fan.
+For command-line, use *-h* to display help, or a number representing the percentage of fan duty to control the fan.
 
 
 Build and Install
@@ -18,24 +18,7 @@ cd clevo-indicator-arch
 make install
 ```
 
-Notes
+Additional Notes
 -----
-
-The executable has setuid flag on, but must be run by the current desktop user,
-because only the desktop user is allowed to display a desktop indicator in
-Ubuntu, while a non-root user is not allowed to control Clevo EC by low-level
-IO ports. The setuid=root creates a special situation in which this program can
-fork itself and run under two users (one for desktop/indicator and the other
-for EC control), so you could see two processes in ps, and killing either one
-of them would immediately terminate the other.
-
-If this does not work, try: ```sudo chmod ugo+rwx clevo-indicator```
-
-Be careful not to use any other program accessing the EC by low-level IO
-syscalls (inb/outb) at the same time - I don't know what might happen, since
-every EC actions require multiple commands to be issued in correct sequence and
-there is no kernel-level protection to ensure each action must be completed
-before other actions can be performed... The program also attempts to prevent
-abortion while issuing commands by catching all termination signals except
-SIGKILL - don't kill the indicator by "kill -9" unless absolutely necessary.
+See original README: https://github.com/SkyLandTW/clevo-indicator/blob/master/README.md
 
